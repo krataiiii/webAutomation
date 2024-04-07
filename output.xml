@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-04-05T22:15:22.334216" rpa="false" schemaversion="5">
+<suite id="s1" name="Testcase" source="/Users/nopparatsmacpro/Desktop/Test_Automate/testcases/testcase.robot">
+<test id="s1-t1" name="[TC-1] - Verify When A User Login Successfully" line="8">
+<kw name="Go to the page" owner="Keyword" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2024-04-05T22:15:22.437529" level="INFO">Environment variable 'webdriver.chrome.driver' set to value '/Users/nopparatsmacpro/Desktop/Test_Automate/chromedriver.exe'.</msg>
+<arg>webdriver.chrome.driver</arg>
+<arg>${EXECDIR}/chromedriver.exe</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2024-04-05T22:15:22.437385" elapsed="0.000176"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:22.437763" level="INFO">Opening browser 'chrome' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-05T22:15:22.437658" elapsed="5.083997"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:22.436878" elapsed="5.085010"/>
+</kw>
+<kw name="Input Value To Login" owner="Keyword">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${username_input_field}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:27.522784" elapsed="0.023916"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:27.547036" level="INFO">Typing text 'tomsmith' into text field '//input[@id="username"]'.</msg>
+<arg>${username_input_field}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:27.546848" elapsed="0.128819"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:27.676028" level="INFO">Typing text 'SuperSecretPassword!' into text field '//input[@id="password"]'.</msg>
+<arg>${password_input_field}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:27.675832" elapsed="0.039123"/>
+</kw>
+<arg>${username}</arg>
+<arg>${valid_password}</arg>
+<status status="PASS" start="2024-04-05T22:15:27.522395" elapsed="0.192700"/>
+</kw>
+<kw name="Click Login Button" owner="Keyword">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:27.715728" level="INFO">Clicking button '//button[@type="submit"]'.</msg>
+<arg>${login_button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:27.715564" elapsed="0.649853"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:27.715330" elapsed="0.650210"/>
+</kw>
+<kw name="Verify Text Value In Label When Login Successfully" owner="Keyword" source_name="Verify Text Value In Label When ${expected}">
+<kw name="Set Maximum Characters" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:28.366685" level="INFO">${max_char} = 30</msg>
+<var>${max_char}</var>
+<arg>'${case}' == 'Login Successfully'</arg>
+<arg>30</arg>
+<arg>'${case}' == 'Logout Successfully'</arg>
+<arg>34</arg>
+<arg>'${case}' == 'Login Unsucessfully'</arg>
+<arg>25</arg>
+<arg>'${case}' == 'Login With Invalid User'</arg>
+<arg>25</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.366492" elapsed="0.000214"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:28.366939" level="INFO">${max_char} = 30</msg>
+<arg>${max_char}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.366805" elapsed="0.000160"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:28.366188" elapsed="0.000818"/>
+</kw>
+<kw name="Set Expected Text" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:28.367928" level="INFO">${expected_text} = You logged into a secure area!</msg>
+<var>${expected_text}</var>
+<arg>'${text}' == 'Login Successfully'</arg>
+<arg>${login_success_text_expected}</arg>
+<arg>'${text}' == 'Logout Successfully'</arg>
+<arg>${logout_success_text_expected}</arg>
+<arg>'${text}' == 'Login Unsucessfully'</arg>
+<arg>${login_fail_invalid_password_text_expected}</arg>
+<arg>'${text}' == 'Login With Invalid User'</arg>
+<arg>${login_fail_invalid_username_text_expected}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.367357" elapsed="0.000669"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:28.368371" level="INFO">${expected_text} = You logged into a secure area!</msg>
+<arg>${expected_text}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.368178" elapsed="0.000224"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:28.367089" elapsed="0.001361"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${label_text}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.368567" elapsed="0.009773"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:28.387622" level="INFO">${actual} = You logged into a secure area!
+×</msg>
+<var>${actual}</var>
+<arg>${label_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.378476" elapsed="0.009186"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-05T22:15:28.387951" level="INFO">You logged into a secure area!
+×</msg>
+<arg>${actual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.387824" elapsed="0.000157"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2024-04-05T22:15:28.388231" level="INFO">${actual_text} = You logged into a secure area!</msg>
+<var>${actual_text}</var>
+<arg>${actual}</arg>
+<arg>0</arg>
+<arg>${max_char}</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.388060" elapsed="0.000185"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_text}</arg>
+<arg>${expected_text}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.388319" elapsed="0.000114"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:28.365761" elapsed="0.022721"/>
+</kw>
+<kw name="Click Logout Button" owner="Keyword">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:28.388891" level="INFO">Clicking element '//a[@class="button secondary radius"]'.</msg>
+<arg>${logout_button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:28.388780" elapsed="0.639889"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:28.388613" elapsed="0.640179"/>
+</kw>
+<kw name="Verify Text Value In Label When Logout Successfully" owner="Keyword" source_name="Verify Text Value In Label When ${expected}">
+<kw name="Set Maximum Characters" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:29.030245" level="INFO">${max_char} = 34</msg>
+<var>${max_char}</var>
+<arg>'${case}' == 'Login Successfully'</arg>
+<arg>30</arg>
+<arg>'${case}' == 'Logout Successfully'</arg>
+<arg>34</arg>
+<arg>'${case}' == 'Login Unsucessfully'</arg>
+<arg>25</arg>
+<arg>'${case}' == 'Login With Invalid User'</arg>
+<arg>25</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.030034" elapsed="0.000234"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:29.030502" level="INFO">${max_char} = 34</msg>
+<arg>${max_char}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.030374" elapsed="0.000242"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:29.029761" elapsed="0.000896"/>
+</kw>
+<kw name="Set Expected Text" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:29.031043" level="INFO">${expected_text} = You logged out of the secure area!</msg>
+<var>${expected_text}</var>
+<arg>'${text}' == 'Login Successfully'</arg>
+<arg>${login_success_text_expected}</arg>
+<arg>'${text}' == 'Logout Successfully'</arg>
+<arg>${logout_success_text_expected}</arg>
+<arg>'${text}' == 'Login Unsucessfully'</arg>
+<arg>${login_fail_invalid_password_text_expected}</arg>
+<arg>'${text}' == 'Login With Invalid User'</arg>
+<arg>${login_fail_invalid_username_text_expected}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.030908" elapsed="0.000149"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:29.031232" level="INFO">${expected_text} = You logged out of the secure area!</msg>
+<arg>${expected_text}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.031134" elapsed="0.000119"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:29.030737" elapsed="0.000551"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${label_text}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.031352" elapsed="0.006669"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:29.046528" level="INFO">${actual} = You logged out of the secure area!
+×</msg>
+<var>${actual}</var>
+<arg>${label_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.038132" elapsed="0.008427"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-05T22:15:29.046793" level="INFO">You logged out of the secure area!
+×</msg>
+<arg>${actual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.046683" elapsed="0.000137"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2024-04-05T22:15:29.047031" level="INFO">${actual_text} = You logged out of the secure area!</msg>
+<var>${actual_text}</var>
+<arg>${actual}</arg>
+<arg>0</arg>
+<arg>${max_char}</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.046894" elapsed="0.000152"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_text}</arg>
+<arg>${expected_text}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.047121" elapsed="0.000118"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:29.029385" elapsed="0.017901"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.047448" elapsed="0.075518"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:22.436547" elapsed="6.686560"/>
+</test>
+<test id="s1-t2" name="[TC-2] - Verify When A User Login Failed With Invalid Password" line="15">
+<kw name="Go to the page" owner="Keyword" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2024-04-05T22:15:29.124684" level="INFO">Environment variable 'webdriver.chrome.driver' set to value '/Users/nopparatsmacpro/Desktop/Test_Automate/chromedriver.exe'.</msg>
+<arg>webdriver.chrome.driver</arg>
+<arg>${EXECDIR}/chromedriver.exe</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.124558" elapsed="0.000164"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:29.124948" level="INFO">Opening browser 'chrome' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-05T22:15:29.124828" elapsed="4.851655"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:29.124305" elapsed="4.852501"/>
+</kw>
+<kw name="Input Value To Login" owner="Keyword">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${username_input_field}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:33.978168" elapsed="0.009505"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:33.987974" level="INFO">Typing text 'tomsmith' into text field '//input[@id="username"]'.</msg>
+<arg>${username_input_field}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:33.987814" elapsed="0.105385"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:34.093539" level="INFO">Typing text 'Password!' into text field '//input[@id="password"]'.</msg>
+<arg>${password_input_field}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.093353" elapsed="0.037219"/>
+</kw>
+<arg>${username}</arg>
+<arg>${invalid_password}</arg>
+<status status="PASS" start="2024-04-05T22:15:33.977516" elapsed="0.153175"/>
+</kw>
+<kw name="Click Login Button" owner="Keyword">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:34.131615" level="INFO">Clicking button '//button[@type="submit"]'.</msg>
+<arg>${login_button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.131273" elapsed="0.594291"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:34.130961" elapsed="0.594788"/>
+</kw>
+<kw name="Verify Text Value In Label When Login Unsucessfully" owner="Keyword" source_name="Verify Text Value In Label When ${expected}">
+<kw name="Set Maximum Characters" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:34.726654" level="INFO">${max_char} = 25</msg>
+<var>${max_char}</var>
+<arg>'${case}' == 'Login Successfully'</arg>
+<arg>30</arg>
+<arg>'${case}' == 'Logout Successfully'</arg>
+<arg>34</arg>
+<arg>'${case}' == 'Login Unsucessfully'</arg>
+<arg>25</arg>
+<arg>'${case}' == 'Login With Invalid User'</arg>
+<arg>25</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.726427" elapsed="0.000248"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:34.726935" level="INFO">${max_char} = 25</msg>
+<arg>${max_char}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.726804" elapsed="0.000155"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:34.726188" elapsed="0.000810"/>
+</kw>
+<kw name="Set Expected Text" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:34.727510" level="INFO">${expected_text} = Your password is invalid!</msg>
+<var>${expected_text}</var>
+<arg>'${text}' == 'Login Successfully'</arg>
+<arg>${login_success_text_expected}</arg>
+<arg>'${text}' == 'Logout Successfully'</arg>
+<arg>${logout_success_text_expected}</arg>
+<arg>'${text}' == 'Login Unsucessfully'</arg>
+<arg>${login_fail_invalid_password_text_expected}</arg>
+<arg>'${text}' == 'Login With Invalid User'</arg>
+<arg>${login_fail_invalid_username_text_expected}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.727247" elapsed="0.000278"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:34.727715" level="INFO">${expected_text} = Your password is invalid!</msg>
+<arg>${expected_text}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.727606" elapsed="0.000373"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:34.727078" elapsed="0.000939"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${label_text}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.728086" elapsed="0.009206"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:34.746654" level="INFO">${actual} = Your password is invalid!
+×</msg>
+<var>${actual}</var>
+<arg>${label_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.737422" elapsed="0.009261"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-05T22:15:34.746919" level="INFO">Your password is invalid!
+×</msg>
+<arg>${actual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.746807" elapsed="0.000140"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2024-04-05T22:15:34.747163" level="INFO">${actual_text} = Your password is invalid!</msg>
+<var>${actual_text}</var>
+<arg>${actual}</arg>
+<arg>0</arg>
+<arg>${max_char}</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.747021" elapsed="0.000157"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_text}</arg>
+<arg>${expected_text}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.747255" elapsed="0.000110"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:34.725955" elapsed="0.021458"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.747554" elapsed="0.067536"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:29.123599" elapsed="5.691630"/>
+</test>
+<test id="s1-t3" name="[TC-3] - Verify When A User Login Failed With Username and Password are invalid" line="20">
+<kw name="Go to the page" owner="Keyword" type="SETUP">
+<kw name="Set Environment Variable" owner="OperatingSystem">
+<msg time="2024-04-05T22:15:34.816636" level="INFO">Environment variable 'webdriver.chrome.driver' set to value '/Users/nopparatsmacpro/Desktop/Test_Automate/chromedriver.exe'.</msg>
+<arg>webdriver.chrome.driver</arg>
+<arg>${EXECDIR}/chromedriver.exe</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.816488" elapsed="0.000187"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:34.817149" level="INFO">Opening browser 'chrome' to base url 'http://the-internet.herokuapp.com/login'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-05T22:15:34.816799" elapsed="5.861599"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:34.816183" elapsed="5.862807"/>
+</kw>
+<kw name="Input Value To Login" owner="Keyword">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${username_input_field}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:40.680054" elapsed="0.010754"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:40.691134" level="INFO">Typing text 'tomholland' into text field '//input[@id="username"]'.</msg>
+<arg>${username_input_field}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:40.690947" elapsed="0.107138"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:40.798432" level="INFO">Typing text 'Password!' into text field '//input[@id="password"]'.</msg>
+<arg>${password_input_field}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:40.798244" elapsed="0.035114"/>
+</kw>
+<arg>${invalid_username}</arg>
+<arg>${invalid_password}</arg>
+<status status="PASS" start="2024-04-05T22:15:40.679568" elapsed="0.153951"/>
+</kw>
+<kw name="Click Login Button" owner="Keyword">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:40.834329" level="INFO">Clicking button '//button[@type="submit"]'.</msg>
+<arg>${login_button}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:40.834018" elapsed="0.635260"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:40.833736" elapsed="0.635635"/>
+</kw>
+<kw name="Verify Text Value In Label When Login With Invalid User" owner="Keyword" source_name="Verify Text Value In Label When ${expected}">
+<kw name="Set Maximum Characters" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:41.470229" level="INFO">${max_char} = 25</msg>
+<var>${max_char}</var>
+<arg>'${case}' == 'Login Successfully'</arg>
+<arg>30</arg>
+<arg>'${case}' == 'Logout Successfully'</arg>
+<arg>34</arg>
+<arg>'${case}' == 'Login Unsucessfully'</arg>
+<arg>25</arg>
+<arg>'${case}' == 'Login With Invalid User'</arg>
+<arg>25</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.470014" elapsed="0.000233"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:41.470452" level="INFO">${max_char} = 25</msg>
+<arg>${max_char}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.470338" elapsed="0.000136"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:41.469791" elapsed="0.000720"/>
+</kw>
+<kw name="Set Expected Text" owner="Keyword">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2024-04-05T22:15:41.470901" level="INFO">${expected_text} = Your username is invalid!</msg>
+<var>${expected_text}</var>
+<arg>'${text}' == 'Login Successfully'</arg>
+<arg>${login_success_text_expected}</arg>
+<arg>'${text}' == 'Logout Successfully'</arg>
+<arg>${logout_success_text_expected}</arg>
+<arg>'${text}' == 'Login Unsucessfully'</arg>
+<arg>${login_fail_invalid_password_text_expected}</arg>
+<arg>'${text}' == 'Login With Invalid User'</arg>
+<arg>${login_fail_invalid_username_text_expected}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.470734" elapsed="0.000181"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-05T22:15:41.471091" level="INFO">${expected_text} = Your username is invalid!</msg>
+<arg>${expected_text}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.470991" elapsed="0.000121"/>
+</kw>
+<arg>${expected}</arg>
+<status status="PASS" start="2024-04-05T22:15:41.470583" elapsed="0.000563"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${label_text}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.471209" elapsed="0.010060"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-04-05T22:15:41.491781" level="INFO">${actual} = Your username is invalid!
+×</msg>
+<var>${actual}</var>
+<arg>${label_text}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.481424" elapsed="0.010413"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-05T22:15:41.492137" level="INFO">Your username is invalid!
+×</msg>
+<arg>${actual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.492006" elapsed="0.000163"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2024-04-05T22:15:41.492771" level="INFO">${actual_text} = Your username is invalid!</msg>
+<var>${actual_text}</var>
+<arg>${actual}</arg>
+<arg>0</arg>
+<arg>${max_char}</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.492265" elapsed="0.000522"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_text}</arg>
+<arg>${expected_text}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.492872" elapsed="0.000117"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:41.469567" elapsed="0.023473"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-04-05T22:15:41.493188" elapsed="0.069531"/>
+</kw>
+<status status="PASS" start="2024-04-05T22:15:34.815508" elapsed="6.747366"/>
+</test>
+<status status="PASS" start="2024-04-05T22:15:22.334885" elapsed="19.228633"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Testcase">Testcase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
